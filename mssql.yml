@@ -1,14 +1,14 @@
 services:
   mssql:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: unless-stopped
+    ports:
+      - "1434:1433"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=${MSSQL_SA_PASSWORD}
     volumes:
       - mssql_data:/var/opt/mssql
-    ports:
-      - "1434:1433"
-    restart: unless-stopped
     healthcheck:
       test: [ "CMD", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "${MSSQL_SA_PASSWORD}", "-Q", "select 1" ]
       interval: 30s
