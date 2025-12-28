@@ -1,5 +1,5 @@
 # Mozart
-### A repository containing docker compose files for different types of containers.
+### A repository containing docker compose files for different types of containers
 
 ## Usage
 ```powershell
